@@ -1,7 +1,8 @@
+
 <%= form_for(pin) do |f| %>
   <% if pin.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(pin.errors.count, "error") %> prohibited this pin from being saved:</h2>
+      <h2><%= pluralize(pin.errors.count, "errores") %> no permiten guardar tu Pin</h2>
 
       <ul>
       <% pin.errors.full_messages.each do |message| %>
@@ -10,16 +11,19 @@
       </ul>
     </div>
   <% end %>
-
+<div class="form-group">
   <div class="field">
     <%= f.label :photo %>
-    <%= f.text_field :photo %>
+    <%= f.text_field :photo, :class => "form-control" %>
   </div>
+</div>
 
+<div class="form-group">
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, :class => "form-control" %>
   </div>
+</div>  
 
   <div class="actions">
     <%= f.submit %>
