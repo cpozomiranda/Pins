@@ -1,12 +1,19 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
+
+
 <p>
-  <strong>Photo:</strong>
+  <strong>Nombre:</strong>
+  <%= @pin.name %>
+</p>
+
+<p>
+  <strong>Foto:</strong><br>
   <%= image_tag(@pin.photo, :style => "width:500px") %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Descripción:</strong>
   <%= @pin.description %>
 </p>
 
