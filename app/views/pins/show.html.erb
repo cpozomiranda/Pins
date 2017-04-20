@@ -22,3 +22,5 @@
 <%	end %>
 <%= link_to 'Back', pins_path %>
 </div>
+
+<%= link_to "Más Pins del usuario", pinsof_path(@pin.user.id)  %>

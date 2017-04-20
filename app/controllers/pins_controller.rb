@@ -11,6 +11,13 @@ class PinsController < ApplicationController
   def mypins
     @pins = current_user.pins
   end
+
+  def pinsof
+    @user_id = params[:user_id]
+    @user = User.find(@user_id)
+    @pins = @user.pins
+  end
+
   # GET /pins/1
   # GET /pins/1.json
   def show
