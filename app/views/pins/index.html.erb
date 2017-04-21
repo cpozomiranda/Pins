@@ -1,39 +1,62 @@
-<p id="notice"><%= notice %></p>
-<div class="container">
-  <h1>Mis Pins</h1>
-<div class="row">
-<div class="col-sm-12 text-center">
-<% if user_signed_in? %>
-   <%= link_to 'Nuevo Pin', new_pin_path, :class => "btn btn-primary" %>
-  <% end %>
-</div>
-</div>
-<br>
+
+  <p id="notice"><%= notice %></p>
+
+  <div class="container">
+    <h1 style="color:grey;">Proyectos</h1>
 
 
-<div class="row">
-<div class="col-sm-12">
-  <% @pins.each do |pin| %>
-  <div class="col-sm-4">
-    <div class="thumbnail">
-      <%= pin.description %>
-      <%= image_tag(pin.photo, :class => 'img-responsive') %>
 
-      <div class="buttons" style="margin-bottom: 10px; margin-top: 10px;">
-        <%= link_to 'Show', pin, :class => "btn" %>
+<p class="text-center" ><%= link_to '', new_pin_path, :class => "btn btn-default btn-lg glyphicon glyphicon-plus", :style =>"color: grey" %></p>
+    <div id="pins" class="transitions-enabled">
+      <% @pins.each do |pin| %>
+      <div class="box panel panel-default">
 
-        <% if user_signed_in? %>
-          <%= link_to 'Edit', edit_pin_path(pin), :class => "btn" %>
-          <%= link_to 'Destroy', pin, :class => "btn", method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </div>
-    </div>
+        <div class="thumbnail">
+          <%= image_tag(pin.photo, :class => 'img-responsive') %>
+        </div>
+        
+        <h3 style="color: #464343; font-family: 'Source Sans Pro', sans-serif;
+        " class="text-center"><%= pin.name %></h3>
+      <p style="font-size: 12px;" class="text-center">De&nbsp;<a href="<%= mypins_path %>"><%= pin.user.email %></a></p>
+        <hr>
+        <div class="pad">
+        <p class="text-justify" style="color: grey; word-spacing: -1px; font-size: 13px; "><%= pin.description %></p>
+               <div class="text-center">
+          <%= link_to 'ver', pin, :class => "btn" %>
+          <% if user_signed_in? %>
+          <%= link_to 'Editar', edit_pin_path(pin), :class => "btn" %>
+          <%= link_to 'Eliminar', pin, :class => "btn", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+          </div>
+        </div>
+            </div>  
+      <% end %>
+
+    </div>  
+
   </div>
-  <% end %>
-  </div>
-</div>
-  
 
-  <br>
-  
-</div>
+<style>
+  .pad{
+ 
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+
+  .thumbnail:hover{
+    color: red;
+
+  }
+
+  hr{
+    margin-top: 5px;
+
+  }
+  .box{
+    border-radius: 5px;
+  }
+
+</style>
+

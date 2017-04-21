@@ -6,6 +6,7 @@ class PinsController < ApplicationController
   # GET /pins.json
   def index
     @pins = Pin.all
+    
   end
 
   def mypins
@@ -81,6 +82,6 @@ class PinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
-      params.require(:pin).permit(:photo, :description, :name)
+      params.require(:pin).permit(:photo, :description, :name, :category)
     end
 end
