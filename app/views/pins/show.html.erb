@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
 <div class="container">
-
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
 <div class="well">
 
 <h3><%= @pin.name %></h3>
@@ -16,5 +16,7 @@
 
 <%= link_to "Más Pins del usuario", pinsof_path(@pin.user.id)  %>
 
+</div>
+</div>
 </div>
 </div>

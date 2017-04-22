@@ -1,12 +1,11 @@
-<div class="color">
+
   <p id="notice"><%= notice %></p>
 
   <div class="container">
-    <h1 style="color:grey;">Mis Proyectos</h1>
+      <h2 class="text-center">MIS PROYECTOS</h2>
+      <br>
 
 
-
-<p class="text-center" ><%= link_to 'Nuevo Pin', new_pin_path, :class => "btn btn-success" %></p>
     <div id="pins" class="transitions-enabled">
       <% @pins.each do |pin| %>
       <div class="box panel panel-default">
@@ -14,36 +13,52 @@
         <div class="thumbnail">
           <%= image_tag(pin.photo, :class => 'img-responsive') %>
         </div>
-                <h3 style="color: #464343; font-family: 'Source Sans Pro', sans-serif;
-        " class="text-center"><%= pin.name %></h3>
-      <p class="text-center">De&nbsp;<a href="<%= mypins_path %>"><%= pin.user.email %></a></p>
-              <div class="pad">
-
-
-        <p><%= pin.description %></p>
-        <div class="text-center">
-          <%= link_to 'ver', pin, :class => "btn" %>
+        
+        <h4 style="color: #464343; font-family: 'Source Sans Pro', sans-serif;
+        " class="text-center"><%= pin.name %></h4>
+      <p class="text-center">
+      <span style="font-size: 12px; padding-right: 5px; border-right: 1px solid grey">De&nbsp;<a href="<%= pins_path %>"><%= pin.user.email %></a></span>
+      <span style="color: #40C2C9;" > <%= pin.category.name %></span>
+      </p>
+              <hr>
+        <div class="pad">
+        <p class="text-justify" style="color: ; word-spacing: -1px; font-size: 13px; "><%= pin.description %></p>
+               <div class="text-center">
+          <%= link_to 'ver', pin, :class => "btn btn-default" %>
           <% if user_signed_in? %>
-          <%= link_to 'Editar', edit_pin_path(pin), :class => "btn" %>
-          <%= link_to 'Eliminar', pin, :class => "btn", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Editar', edit_pin_path(pin), :class => "btn btn-default" %>
+          <%= link_to 'Eliminar', pin, :class => "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
           </div>
         </div>
-      </div>  
+            </div>  
       <% end %>
 
     </div>  
 
   </div>
-</div>
 
 <style>
   .pad{
-    padding: 10px;
+ 
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 10px;
   }
 
   .thumbnail:hover{
     color: red;
 
   }
+
+  hr{
+    margin-top: 5px;
+
+  }
+  .box{
+    border-radius: 5px;
+  }
+
 </style>
+

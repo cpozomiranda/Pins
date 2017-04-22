@@ -2,9 +2,8 @@
   <p id="notice"><%= notice %></p>
 
   <div class="container">
-    <h1 style="color:grey;">Proyectos</h1>
-
-
+      <h2 class="text-center"> PROYECTOS</h2>
+    <br>
 
 <p class="text-center" ><%= link_to '', new_pin_path, :class => "btn btn-default btn-lg glyphicon glyphicon-plus", :style =>"color: grey" %></p>
     <div id="pins" class="transitions-enabled">
@@ -15,17 +14,19 @@
           <%= image_tag(pin.photo, :class => 'img-responsive') %>
         </div>
         
-        <h3 style="color: #464343; font-family: 'Source Sans Pro', sans-serif;
-        " class="text-center"><%= pin.name %></h3>
-      <p style="font-size: 12px;" class="text-center">De&nbsp;<a href="<%= mypins_path %>"><%= pin.user.email %></a></p>
-        <hr>
+        <h4 style="color: #464343; font-family: 'Source Sans Pro', sans-serif;
+        " class="text-center"><%= pin.name %></h4>
+      <p class="text-center">
+      <span style="font-size: 12px; padding-right: 5px; border-right: 1px solid grey">De&nbsp;<a href="<%= pins_path %>"><%= pin.user.email %></a></span>
+      <span style="color: #40C2C9;" > <%= pin.category.name %></span>
+      </p>
+              <hr>
         <div class="pad">
-        <p class="text-justify" style="color: grey; word-spacing: -1px; font-size: 13px; "><%= pin.description %></p>
+        <p class="text-justify" style="color: ; word-spacing: -1px; font-size: 13px; "><%= pin.description %></p>
                <div class="text-center">
-          <%= link_to 'ver', pin, :class => "btn" %>
+          <%= link_to 'ver', pin, :class => "btn btn-primary", :style => "color:white" %>
           <% if user_signed_in? %>
-          <%= link_to 'Editar', edit_pin_path(pin), :class => "btn" %>
-          <%= link_to 'Eliminar', pin, :class => "btn", method: :delete, data: { confirm: 'Are you sure?' } %>
+      
           <% end %>
           </div>
         </div>
@@ -45,10 +46,6 @@
     padding-bottom: 10px;
   }
 
-  .thumbnail:hover{
-    color: red;
-
-  }
 
   hr{
     margin-top: 5px;
