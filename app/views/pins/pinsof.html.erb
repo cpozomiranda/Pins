@@ -1,61 +1,68 @@
 
-  <p id="notice"><%= notice %></p>
-
-  <div class="container">
-      <h3 style="color:grey; margin-left: 50px;">Proyectos</h3>
 
 
-    <div id="pins" class="transitions-enabled">
-      <% @pins.each do |pin| %>
-      <div class="box panel panel-default">
+<div class="container">
 
-        <div class="thumbnail">
-          <%= image_tag(pin.photo, :class => 'img-responsive') %>
-        </div>
-        
-        <h4 style="color: #464343; font-family: 'Source Sans Pro', sans-serif;
-        " class="text-center"><%= pin.name %></h4>
-      <p style="font-size: 12px;" class="text-center">De&nbsp;<a href="<%= pins_path %>"><%= pin.user.email %></a></p>
-      <p style="color:grey" class="text-center"> <%= pin.category %></p>
-              <hr>
-        <div class="pad">
-        <p class="text-justify" style="color: ; word-spacing: -1px; font-size: 13px; "><%= pin.description %></p>
-               <div class="text-center">
-          <%= link_to 'ver', pin, :class => "btn" %>
-          <% if user_signed_in? %>
-          <%= link_to 'Editar', edit_pin_path(pin), :class => "btn" %>
-          <%= link_to 'Eliminar', pin, :class => "btn", method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-          </div>
-        </div>
-            </div>  
-      <% end %>
 
-    </div>  
+  <h3 class="text-center" style="color:grey;"><%= @user %></h3>
+  <br>
 
-  </div>
-
-<style>
-  .pad{
  
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 10px;
-  }
+  <div id="pins" class="transitions-enabled">
+    <% @pins.each do |pin| %>
+    <div class="box panel panel-default">
 
-  .thumbnail:hover{
-    color: red;
+      <div class="thumbnail">
 
-  }
+        <%= image_tag(pin.photo, :class => 'img-responsive') %>
+      </div>
+      
+      <h4 style="color: #464343; font-family: 'Source Sans Pro', sans-serif;
+      " class="text-center"><%= pin.name %></h4>
+      <p class="text-center">
+        <span style="font-size: 12px; padding-right: 5px; border-right: 1px solid grey">De&nbsp;<a href="<%= pins_path %>"><%= pin.user.email %></a></span>
+        <span style="color: #40C2C9;" > <%= pin.category.name %></span>
+      </p>
+      <hr>
+      <div class="pad">
+        <p><%= pin.description %></p>
+        <div class="text-center">
+          <%= link_to '', pin, :class => "glyphicon glyphicon-eye-open", :style => "color:grey; font-size:18px" %> &nbsp &nbsp <a href="" class="glyphicon glyphicon-thumbs-up" style="font-size: 18px; color:grey"></a>
+          <% if user_signed_in? %>
+          
+          <% end %>
+        </div>
+      </div>
+    </div>  
+    <% end %>
 
-  hr{
-    margin-top: 5px;
+  </div>  
 
-  }
-  .box{
-    border-radius: 5px;
-  }
 
-</style>
+
+  <style>
+    .pad{
+
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 5px;
+      padding-bottom: 10px;
+      word-wrap: break-word;
+      }
+
+
+    hr{
+      margin-top: 5px;
+
+    }
+    .box{
+      border-radius: 5px;
+      box-shadow: grey  2px 2px 10px ;
+    }
+
+    .thumbnail{
+      box-shadow: grey  1px 1px 1px ;
+    }
+
+  </style>
 

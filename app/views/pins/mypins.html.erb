@@ -1,6 +1,4 @@
 
-  <p id="notice"><%= notice %></p>
-
   <div class="container">
       <h2 class="text-center">MIS PROYECTOS</h2>
       <br>
@@ -24,10 +22,11 @@
         <div class="pad">
         <p class="text-justify" style="color: ; word-spacing: -1px; font-size: 13px; "><%= pin.description %></p>
                <div class="text-center">
-          <%= link_to 'ver', pin, :class => "btn btn-default" %>
+                 <p> <%= link_to '', pin, :class => "glyphicon glyphicon-eye-open", :style => "font-size:18px" %> &nbsp &nbsp <a href=""  class="glyphicon glyphicon-thumbs-up " style="font-size: 18px; "></a>&nbsp &nbsp
           <% if user_signed_in? %>
-          <%= link_to 'Editar', edit_pin_path(pin), :class => "btn btn-default" %>
-          <%= link_to 'Eliminar', pin, :class => "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %>
+         
+          <%= link_to '', pin, :class => "glyphicon glyphicon-remove
+", :style => "font-size:18px", method: :delete, data: { confirm: 'Estas seguro?' } %></p>
           <% end %>
           </div>
         </div>
@@ -47,11 +46,7 @@
     padding-bottom: 10px;
   }
 
-  .thumbnail:hover{
-    color: red;
-
-  }
-
+  
   hr{
     margin-top: 5px;
 
@@ -59,6 +54,7 @@
   .box{
     border-radius: 5px;
   }
+
 
 </style>
 

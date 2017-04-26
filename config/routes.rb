@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :categories
   devise_for :users
-  resources :pins
+  resources :pins 
+  
   get 'welcome/index'
   root 'welcome#index'
   get 'mypins' => 'pins#mypins'
