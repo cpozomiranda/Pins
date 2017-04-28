@@ -8,6 +8,7 @@
   <p class="text-center" ><%= link_to '', new_pin_path, :class => "btn btn-default btn-lg glyphicon glyphicon-plus", :style =>"color: grey" %></p>
   <div id="pins" class="transitions-enabled">
     <% @pins.each do |pin| %>
+
     <div class="box panel panel-default">
 
       <div class="thumbnail">
@@ -24,26 +25,29 @@
       <hr>
       <div class="pad">
         <p align="justify" style="letter-spacing: 0px; word-spacing: -2px;"><%= pin.description %></p>
-        <div class="text-center" style="padding-left: 50px;">
+        <div style="padding-left: 50px;" class="text-center">
 
-         
+
 
 
           <div style="font-size: 17px" class="vote-count bind-<%= pin.id %>">
            <%= link_to '', pin, :class => "glyphicon glyphicon-eye-open", :style => " font-size:17px" %> 
-           
+
+
+            <div class="ri">
            <%= link_to like_pin_path(pin), :remote => true, method: :put, class: 'vpos' do %>
            <i class="glyphicon glyphicon-thumbs-up"></i>
            <span class="vcount-<%= pin.id %>"><%= pin.get_upvotes.size %></span>
            <% end %>
+&nbsp;
 
+          
 
-           &nbsp 
-
-           <%= link_to dislike_pin_path(pin), :remote => true, method: :put, class: 'npos' do %>
+           <%= link_to dislike_pin_path(pin), :remote => true, method: :put, class: 'npos', :style => "color:red" do %>
            <i class="glyphicon glyphicon-thumbs-down"></i>
            <span class="ncount-<%= pin.id %>"><%= pin.get_downvotes.size %></span>
            <% end %>
+           </div>
          </div>
        </div>
      </div>
@@ -52,7 +56,7 @@
 
 
 
-   
+
    <% end %>
 
  </div>  
@@ -62,6 +66,10 @@
 
 
 <style>
+
+  .ri{
+    float: right;
+  }
   .pad{
 
     padding-left: 20px;
