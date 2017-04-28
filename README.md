@@ -1,7 +1,7 @@
 # README
 
 Link a la aplicación
-https://pins-cpm.herokuapp.com/pins
+https://pins-cpm.herokuapp.com/
 
 
 
