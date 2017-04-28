@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   resources :categories
   devise_for :users
-  resources :pins 
-  
+    resources :pins do 
+  member do
+    put "like", to: "pins#upvote"
+    put "dislike", to: "pins#downvote"
+  end
+  end
+
   get 'welcome/index'
   root 'welcome#index'
   get 'mypins' => 'pins#mypins'

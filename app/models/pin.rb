@@ -6,5 +6,5 @@ class Pin < ApplicationRecord
 	validates :name, presence: true
 	validates :category, presence: true
 	mount_uploader :photo, PhotoUploader
-	
+	acts_as_votable
 end

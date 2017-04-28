@@ -1,6 +1,6 @@
 class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except:[:index, :show]
+  before_action :authenticate_user!, except:[:index, :show]
 
   # GET /pins
   # GET /pins.json
@@ -27,6 +27,36 @@ class PinsController < ApplicationController
   def show
       
   end
+
+def upvote
+  @pin = Pin.find(params[:id])
+  @pin.upvote_by current_user
+
+  respond_to do |format|
+    
+    format.html { redirect_to :back }
+    format.json { render json: { count: @pin.liked_count } }
+    format.js 
+   
+    
+ end
+end
+
+
+
+def downvote
+  @pin = Pin.find(params[:id])
+  @pin.downvote_by current_user
+ 
+ respond_to do |format|
+
+    format.html {redirect_to :back }
+    format.json { render json: { count: @pin.disliked_count } }
+    format.js
+
+  end
+
+end
 
   # GET /pins/new
   def new
@@ -87,4 +117,5 @@ class PinsController < ApplicationController
     def pin_params
       params.require(:pin).permit(:photo, :description, :name, :category_id, :like)
     end
-end
+
+  end

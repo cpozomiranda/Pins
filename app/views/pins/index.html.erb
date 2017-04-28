@@ -1,6 +1,5 @@
 
 
-
 <div class="container">
   <h2 class="text-center"> PROYECTOS</h2>
   <br>
@@ -12,7 +11,7 @@
     <div class="box panel panel-default">
 
       <div class="thumbnail">
-      
+
         <%= image_tag(pin.photo, :class => 'img-responsive') %>
       </div>
       
@@ -25,26 +24,46 @@
       <hr>
       <div class="pad">
         <p align="justify" style="letter-spacing: 0px; word-spacing: -2px;"><%= pin.description %></p>
-        <div class="text-center">
-      
-          <%= link_to '', pin, :class => "glyphicon glyphicon-eye-open", :style => " font-size:18px" %> &nbsp &nbsp 
+        <div class="text-center" style="padding-left: 50px;">
 
-           <a href="" class="glyphicon glyphicon-thumbs-up" style="font-size: 18px; "></a>
-          <% if user_signed_in? %>
-          
-          <% end %>
-        </div>
-      </div>
-    </div>  
-    <% end %>
+         
 
-  </div>  
+
+          <div style="font-size: 17px" class="vote-count bind-<%= pin.id %>">
+           <%= link_to '', pin, :class => "glyphicon glyphicon-eye-open", :style => " font-size:17px" %> 
+           
+           <%= link_to like_pin_path(pin), :remote => true, method: :put, class: 'vpos' do %>
+           <i class="glyphicon glyphicon-thumbs-up"></i>
+           <span class="vcount-<%= pin.id %>"><%= pin.get_upvotes.size %></span>
+           <% end %>
+
+
+           &nbsp 
+
+           <%= link_to dislike_pin_path(pin), :remote => true, method: :put, class: 'npos' do %>
+           <i class="glyphicon glyphicon-thumbs-down"></i>
+           <span class="ncount-<%= pin.id %>"><%= pin.get_downvotes.size %></span>
+           <% end %>
+         </div>
+       </div>
+     </div>
+
+   </div>
+
+
+
+   
+   <% end %>
+
+ </div>  
 
 </div>
 
+
+
 <style>
   .pad{
-   
+
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 5px;
@@ -64,6 +83,10 @@
 
   .thumbnail{
     box-shadow: grey  1px 1px 1px ;
+  }
+
+  .red{
+    color: #FC4545 !important;
   }
 
 </style>
